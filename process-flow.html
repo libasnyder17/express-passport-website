@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find out where you are in the passport application process">
+    <title>Process Flow - Express Passport</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Express Passport</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="process-flow.html" class="active">Process Flow</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Where Are You in the Process?</h1>
+            <p>Choose the option that best describes your current situation, and we'll guide you through the next steps to get your passport quickly.</p>
+        </div>
+    </section>
+
+    <!-- Process Flow Options -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Select Your Path</h2>
+            <div class="process-flow">
+                <!-- Option 1 -->
+                <div class="flow-option" onclick="location.href='contact.html?path=started'">
+                    <div class="flow-number">1</div>
+                    <h2>I Already Started My Application</h2>
+                    <p>You've begun the passport application process but need help expediting it or completing the final steps. We can take over from here and ensure your passport arrives on time.</p>
+                    <br>
+                    <p><strong>We can help with:</strong></p>
+                    <ul style="text-align: left; margin: 1rem 2rem; color: var(--light-gold);">
+                        <li>Completing partially filled applications</li>
+                        <li>Expediting applications already in progress</li>
+                        <li>Fixing errors or missing information</li>
+                        <li>Following up on delayed applications</li>
+                    </ul>
+                    <a href="contact.html?path=started" class="btn" style="margin-top: 1rem;">Continue with This Path</a>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="flow-option" onclick="location.href='contact.html?path=fromstart'">
+                    <div class="flow-number">2</div>
+                    <h2>I Need Help From Start to Finish</h2>
+                    <p>You haven't started your application yet, or you'd prefer expert guidance through the entire process. We'll handle everything for you from beginning to end.</p>
+                    <br>
+                    <p><strong>Our full-service includes:</strong></p>
+                    <ul style="text-align: left; margin: 1rem 2rem; color: var(--light-gold);">
+                        <li>Complete application assistance</li>
+                        <li>Professional passport photos</li>
+                        <li>Document review and verification</li>
+                        <li>Expedited processing and delivery</li>
+                    </ul>
+                    <a href="contact.html?path=fromstart" class="btn" style="margin-top: 1rem;">Start Your Application</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Information -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">What Happens Next?</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Initial Consultation</h3>
+                        <p>We'll review your specific situation, travel timeline, and documentation needs. Our experts will provide clear guidance on the best path forward for your circumstances.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Document Preparation</h3>
+                        <p>We'll help you gather all required documents and ensure everything is completed correctly. This includes application forms, proof of citizenship, identification, and photos.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Expedited Processing</h3>
+                        <p>Our team will submit your application through the fastest available channels and represent you at the passport agency, saving you time and eliminating hassle.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Secure Delivery</h3>
+                        <p>Your completed passport will be delivered directly to your address via secure express shipping, with full tracking information provided.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Have Questions -->
+    <section class="hero">
+        <div class="container">
+            <h2>Still Have Questions?</h2>
+            <p>Not sure which path is right for you? Our passport specialists are here to help. Contact us for a free consultation.</p>
+            <div>
+                <a href="tel:+18454267277" class="btn">Call: (845) 426 - 7277</a>
+                <a href="contact.html" class="btn btn-secondary">Send Us a Message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Express Passport. All rights reserved.</p>
+            <p>Licensed Passport Expediting Service | Nationwide Coverage</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Express Passport for fast passport expediting services">
+    <title>Contact Us - Express Passport</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Express Passport</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="process-flow.html">Process Flow</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our passport specialists. We're here to help you get your passport quickly and efficiently.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div class="contact-section">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Please Select...</option>
+                                <option value="new">New Passport</option>
+                                <option value="renewal">Passport Renewal</option>
+                                <option value="expedited">Expedited Service</option>
+                                <option value="child">Child Passport</option>
+                                <option value="lost">Lost/Stolen Passport</option>
+                                <option value="name-change">Name Change</option>
+                                <option value="second">Second Passport</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline">Travel Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Please Select...</option>
+                                <option value="2-days">Within 2 Days</option>
+                                <option value="3-5-days">3-5 Days</option>
+                                <option value="1-2-weeks">1-2 Weeks</option>
+                                <option value="2-4-weeks">2-4 Weeks</option>
+                                <option value="no-travel">No Immediate Travel Plans</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Please provide any additional details about your passport needs..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Submit Inquiry</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    
+                    <div class="contact-item">
+                        <h4>📞 Phone</h4>
+                        <p><a href="tel:+18454267277" style="color: var(--light-gold); text-decoration: none;">(845) 426 - 7277</a></p>
+                        <p>Call us for immediate assistance</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>💬 Text</h4>
+                        <p><a href="sms:+18454267277" style="color: var(--light-gold); text-decoration: none;">(845) 426 - 7277</a></p>
+                        <p>Text us for quick questions</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>📧 Email</h4>
+                        <p><a href="mailto:Travel1@thegnet.net" style="color: var(--light-gold); text-decoration: none;">Travel1@thegnet.net</a></p>
+                        <p>We respond within 24 hours</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>🏢 Office Location</h4>
+                        <p>37 Jacaruso Drive<br>
+                        Spring Valley, NY 10977</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>🕐 Business Hours</h4>
+                        <p>Sunday-Thursday: 9 AM - 9 PM<br>
+                        Friday: 9 AM - Sundown<br>
+                        Saturday: Closed</p>
+                        <p style="margin-top: 0.5rem;"><em>Emergency services available by appointment</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Us -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Why Reach Out to Us?</h2>
+            <div class="trust-indicators">
+                <div class="indicator">
+                    <div class="indicator-icon">💡</div>
+                    <h3>Free Consultation</h3>
+                    <p>Get expert advice on your passport needs at no cost</p>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-icon">⏱️</div>
+                    <h3>Fast Response</h3>
+                    <p>We typically respond to inquiries within 1-2 hours during business hours</p>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-icon">🎯</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Every situation is unique - we tailor our services to your needs</p>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-icon">✓</div>
+                    <h3>No Obligation</h3>
+                    <p>Ask questions and get information with no pressure to commit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>How fast can I get my passport?</h3>
+                    <p>Our fastest service can deliver your passport in as little as 2 business days. We also offer 3-5 day and 1-2 week options depending on your travel timeline and budget.</p>
+                </div>
+                <div class="service-item">
+                    <h3>What are your fees?</h3>
+                    <p>Our service fees vary based on the turnaround time you select. Contact us for a detailed quote that includes both government fees and our expediting service charges.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Do you serve my area?</h3>
+                    <p>Yes! We provide nationwide service to all 50 states. You can mail us your documents from anywhere in the country.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Is this service legitimate?</h3>
+                    <p>Absolutely. We are a fully licensed and authorized passport expediting service. We work directly with U.S. passport agencies on your behalf.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="hero">
+        <div class="container">
+            <h2>Prefer to Talk on the Phone?</h2>
+            <p>Our passport specialists are standing by to answer your questions and get you started.</p>
+            <div>
+                <a href="tel:+18454267277" class="btn">Call Now: (845) 426 - 7277</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Express Passport. All rights reserved.</p>
+            <p>Licensed Passport Expediting Service | Nationwide Coverage</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In a real implementation, this would send data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Thank you for your inquiry! We will contact you within 1-2 business hours.');
+            
+            // Reset form
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
