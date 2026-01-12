@@ -1,0 +1,23 @@
+# Netlify configuration file
+
+# Form settings
+[build]
+  publish = "."
+
+# Email notifications for form submissions
+[[plugins]]
+  package = "@netlify/plugin-form-submissions"
+
+# Configure form notifications
+[build.environment]
+  # Forms will be available in Netlify dashboard
+
+# Note: To receive email notifications at Travel1@thegnet.net:
+# 1. Deploy your site to Netlify
+# 2. Go to Site Settings > Forms > Form notifications
+# 3. Add an email notification with recipient: Travel1@thegnet.net
+# 4. Select the "contact" form
+# 
+# Alternatively, you can set up Zapier or similar integration
+# from the Netlify Forms dashboard to automatically forward
+# submissions to your email address.
