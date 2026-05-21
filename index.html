@@ -6,6 +6,10 @@
     <meta name="description" content="Express Passport - Fast, authorized passport expediting services nationwide">
     <title>Express Passport - Fast, Authorized Passport Expediting Services</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Premium fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,6 +30,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container">
             <img src="assets/logo-removebg-preview.png" alt="Express Passport logo" class="site-logo">
             <h1>Get Your U.S. Passport Faster</h1>
@@ -154,11 +159,157 @@
         </div>
     </footer>
 
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
     <script>
+        /* ── Mobile menu ───────────────────────────────────────── */
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
         }
+
+        /* ── Three.js cinematic hero scene ─────────────────────── */
+        (function () {
+            var canvas = document.getElementById('hero-canvas');
+            if (!canvas || !window.THREE) return;
+
+            var W = canvas.offsetWidth, H = canvas.offsetHeight;
+            var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+            renderer.setSize(W, H, false);
+            renderer.setClearColor(0x000000, 0);
+
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(52, W / H, 0.1, 100);
+            camera.position.set(0, 0, 5);
+
+            /* -- Globe wireframe -- */
+            var sGeo = new THREE.SphereGeometry(2, 28, 20);
+            var sWire = new THREE.WireframeGeometry(sGeo);
+            var globeMat = new THREE.LineBasicMaterial({ color: 0x1e3d8a, transparent: true, opacity: 0.28 });
+            var globe = new THREE.LineSegments(sWire, globeMat);
+            globe.position.set(2.8, 0.2, -1.5);
+            scene.add(globe);
+
+            /* -- Inner gold globe ring -- */
+            var iGeo = new THREE.SphereGeometry(1.7, 16, 12);
+            var iWire = new THREE.WireframeGeometry(iGeo);
+            var innerMat = new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.07 });
+            var innerGlobe = new THREE.LineSegments(iWire, innerMat);
+            innerGlobe.position.set(2.8, 0.2, -1.5);
+            scene.add(innerGlobe);
+
+            /* -- Passport book shape (floating left) -- */
+            var bGeo = new THREE.BoxGeometry(1.05, 1.45, 0.12);
+            var bEdge = new THREE.EdgesGeometry(bGeo);
+            var bookMat = new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.55 });
+            var book = new THREE.LineSegments(bEdge, bookMat);
+            book.position.set(-2.5, 0.3, -0.5);
+            scene.add(book);
+
+            /* -- Second smaller book (depth) -- */
+            var b2Geo = new THREE.BoxGeometry(0.75, 1.05, 0.10);
+            var b2Edge = new THREE.EdgesGeometry(b2Geo);
+            var book2Mat = new THREE.LineBasicMaterial({ color: 0xE5C46A, transparent: true, opacity: 0.22 });
+            var book2 = new THREE.LineSegments(b2Edge, book2Mat);
+            book2.position.set(-1.8, -0.8, -1.5);
+            scene.add(book2);
+
+            /* -- Particles -- */
+            var N = 250;
+            var pos = new Float32Array(N * 3);
+            for (var i = 0; i < N; i++) {
+                pos[i * 3]     = (Math.random() - 0.5) * 14;
+                pos[i * 3 + 1] = (Math.random() - 0.5) * 9;
+                pos[i * 3 + 2] = (Math.random() - 0.5) * 7 - 2;
+            }
+            var pGeo = new THREE.BufferGeometry();
+            pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            var pMat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.035, transparent: true, opacity: 0.55 });
+            var particles = new THREE.Points(pGeo, pMat);
+            scene.add(particles);
+
+            /* -- Light rings (torus) -- */
+            var rGeo = new THREE.TorusGeometry(2.1, 0.003, 4, 80);
+            var rMat = new THREE.MeshBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.15 });
+            var ring = new THREE.Mesh(rGeo, rMat);
+            ring.position.set(2.8, 0.2, -1.5);
+            ring.rotation.x = Math.PI / 2;
+            scene.add(ring);
+
+            /* -- Resize -- */
+            function onResize() {
+                W = canvas.offsetWidth; H = canvas.offsetHeight;
+                renderer.setSize(W, H, false);
+                camera.aspect = W / H;
+                camera.updateProjectionMatrix();
+            }
+            window.addEventListener('resize', onResize);
+
+            /* -- Mouse parallax -- */
+            var mx = 0, my = 0;
+            document.addEventListener('mousemove', function (e) {
+                mx = (e.clientX / window.innerWidth  - 0.5);
+                my = (e.clientY / window.innerHeight - 0.5);
+            });
+
+            /* -- Animate -- */
+            var t = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                t += 0.004;
+
+                globe.rotation.y      = t * 0.25 + mx * 0.45;
+                globe.rotation.x      = t * 0.08 + my * 0.25;
+                innerGlobe.rotation.y = -t * 0.18;
+                innerGlobe.rotation.z =  t * 0.12;
+                ring.rotation.y       =  t * 0.20;
+
+                book.rotation.y = Math.sin(t * 0.5) * 0.28 + mx * 0.70;
+                book.rotation.x = Math.sin(t * 0.3) * 0.10 + my * 0.42;
+                book.position.y = 0.3 + Math.sin(t * 0.65) * 0.16;
+
+                book2.rotation.y = -Math.sin(t * 0.4) * 0.20 + mx * 0.35;
+                book2.position.y = -0.8 + Math.sin(t * 0.55 + 1) * 0.10;
+
+                particles.rotation.y = t * 0.018;
+                particles.rotation.x = t * 0.009;
+
+                camera.position.x += (mx * 0.45 - camera.position.x) * 0.045;
+                camera.position.y += (-my * 0.28 - camera.position.y) * 0.045;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        })();
+
+        /* ── Scroll reveal ──────────────────────────────────────── */
+        (function () {
+            var sel = '.option-card,.indicator,.step,.service-item,.flow-option,.contact-form,.contact-info,.section-title';
+            var els = document.querySelectorAll(sel);
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var siblings = Array.from(entry.target.parentElement.children);
+                    var delay = siblings.indexOf(entry.target) * 90;
+                    setTimeout(function () {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'none';
+                    }, delay);
+                    io.unobserve(entry.target);
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(22px)';
+                el.style.transition = 'opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1)';
+                io.observe(el);
+            });
+        })();
     </script>
 </body>
 </html>

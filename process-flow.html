@@ -6,6 +6,10 @@
     <meta name="description" content="Find out where you are in the passport application process">
     <title>Process Flow - Express Passport</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Premium fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -128,6 +132,32 @@
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
+        (function () {
+            var sel = '.option-card,.indicator,.step,.service-item,.flow-option,.contact-form,.contact-info,.section-title';
+            var els = document.querySelectorAll(sel);
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var siblings = Array.from(entry.target.parentElement.children);
+                    var delay = siblings.indexOf(entry.target) * 90;
+                    setTimeout(function () {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'none';
+                    }, delay);
+                    io.unobserve(entry.target);
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(22px)';
+                el.style.transition = 'opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1)';
+                io.observe(el);
+            });
+        })();
     </script>
 </body>
 </html>
